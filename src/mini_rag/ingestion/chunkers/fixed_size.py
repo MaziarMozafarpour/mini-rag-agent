@@ -21,18 +21,31 @@ class FixedSizeChunker(TextChunker):
 
     @override
     def chunk_document(self, document: Document) -> list[Chunk]:
-        if len(document) == 0:
+        if len(document.content) == 0:
             return []
 
         chunks: list[Chunk] = []
         content_length = len(document.content)
 
-        for chunk_index, start in range(0, content_length, self.step):
+        start = 0
+        chunk_index = 0
+        while start < content_length:
             end = start + self.chunk_size
-            chunk = Chunk(
-                content=document.content[start:end],
-                metadata={**document.metadata, "chunk_index": chunk_index},
+
+            chunks.append(
+                Chunk(
+                    content=document.content[start:end],
+                    metadata={
+                        **document.metadata,
+                        "chunk_index": chunk_index,
+                    },
+                )
             )
-            chunks.append(chunk)
+
+            if end >= content_length:
+                break
+
+            start += self.step
+            chunk_index += 1
 
         return chunks
