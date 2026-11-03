@@ -5,7 +5,6 @@ from mini_rag.ingestion.document import Document
 from mini_rag.ingestion.loaders.base import DocumentLoader
 
 
-# -----------------------------------------------------------
 class MarkdownDocumentLoader(DocumentLoader):
     @override
     def load_document(self, path: Path) -> Document:

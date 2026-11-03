@@ -1,7 +1,6 @@
 from typing import Any
 
 
-# -----------------------------------------------------------
 class Chunk:
     def __init__(self, content: str, metadata: dict[str, Any] | None = None):
         if not isinstance(content, str):

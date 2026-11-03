@@ -6,7 +6,6 @@ from mini_rag.ingestion.chunk import Chunk
 from mini_rag.ingestion.chunkers.base import TextChunker
 
 
-# -----------------------------------------------------------
 class FixedSizeChunker(TextChunker):
     def __init__(self, chunk_size: int, chunk_overlap: int):
         if chunk_size <= 0:

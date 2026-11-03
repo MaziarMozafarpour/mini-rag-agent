@@ -1,7 +1,6 @@
 from typing import Any
 
 
-# -----------------------------------------------------------
 class Document:
     def __init__(self, content: str, metadata: dict[str, Any] | None = None) -> None:
         if not isinstance(content, str):
